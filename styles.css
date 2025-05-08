@@ -4,7 +4,7 @@ html, body {
     height: 100%;
     overflow: hidden;
     font-family: 'Pacifico', cursive;
-    background: linear-gradient(135deg, #ffe0f0, #e0f7ff);
+    background: linear-gradient(135deg, #fff, #e0f7ff);
   }
   
   #message {
@@ -14,7 +14,7 @@ html, body {
     transform: translate(-50%, -50%);
     z-index: 0;
     font-size: 36px;
-    color: #d63384;
+    color: #FF90BB;
     text-align: center;
     padding: 30px 40px;
     background: rgba(255, 255, 255, 0.85);
