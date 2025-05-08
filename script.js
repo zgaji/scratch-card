@@ -1,11 +1,12 @@
 const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
+const messageBox = document.getElementById('message');
 
-// Make canvas full screen
+// Set canvas full screen
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Fill canvas with gray overlay
+// Fill with overlay color
 ctx.fillStyle = '#bfdda8';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -14,13 +15,17 @@ ctx.globalCompositeOperation = 'destination-out';
 
 let isDrawing = false;
 let lastX, lastY;
+let revealed = false;
 
 // Mouse support
 canvas.addEventListener('mousedown', (e) => {
   isDrawing = true;
   [lastX, lastY] = [e.offsetX, e.offsetY];
 });
-canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseup', () => {
+  isDrawing = false;
+  checkReveal();
+});
 canvas.addEventListener('mouseleave', () => isDrawing = false);
 canvas.addEventListener('mousemove', (e) => drawLine(e.offsetX, e.offsetY));
 
@@ -33,8 +38,10 @@ canvas.addEventListener('touchstart', (e) => {
   lastX = touch.clientX - rect.left;
   lastY = touch.clientY - rect.top;
 });
-
-canvas.addEventListener('touchend', () => isDrawing = false);
+canvas.addEventListener('touchend', () => {
+  isDrawing = false;
+  checkReveal();
+});
 canvas.addEventListener('touchcancel', () => isDrawing = false);
 canvas.addEventListener('touchmove', (e) => {
   e.preventDefault();
@@ -55,4 +62,46 @@ function drawLine(x, y) {
   ctx.lineTo(x, y);
   ctx.stroke();
   [lastX, lastY] = [x, y];
+}
+
+function checkReveal() {
+  if (revealed) return;
+
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let transparentPixels = 0;
+  for (let i = 3; i < imageData.data.length; i += 4) {
+    if (imageData.data[i] === 0) transparentPixels++;
+  }
+
+  const percent = transparentPixels / (canvas.width * canvas.height) * 100;
+
+  if (percent > 50) {
+    revealed = true;
+    showPopup();
+  }
+}
+
+function showPopup() {
+  const popup = document.createElement('div');
+  popup.innerHTML = `
+    <div class="popup">
+      <p>💌 Will you go out with me?</p>
+      <button id="yes">Yes!</button>
+      <button id="no">No 😭</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  document.getElementById('yes').onclick = () => {
+    popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+  };
+
+  document.getElementById('no').onclick = () => {
+    popup.innerHTML = `<p style="font-size:24px;">Aww okay... 💔</p>`;
+  };
 }
