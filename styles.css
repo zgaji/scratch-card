@@ -3,8 +3,8 @@ html, body {
     padding: 0;
     height: 100%;
     overflow: hidden;
-    font-family: 'Pacifico', cursive;
-    background: linear-gradient(135deg, #f9c2, #e0f7ff);
+    font-family: 'Noto Sans', sans-serif;
+    background: linear-gradient(135deg, #f9c2, #fef9c2);
   }
   
   #message {
