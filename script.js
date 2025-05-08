@@ -1,14 +1,9 @@
 const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
-const message = document.getElementById('message');
 
-// Match canvas size to the message div
-canvas.width = message.offsetWidth;
-canvas.height = message.offsetHeight;
-
-// Position canvas on top of the message
-canvas.style.width = `${message.offsetWidth}px`;
-canvas.style.height = `${message.offsetHeight}px`;
+// Make canvas cover the full screen
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 // Fill canvas with gray overlay
 ctx.fillStyle = '#aaa';

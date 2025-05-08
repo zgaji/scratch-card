@@ -1,17 +1,17 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f0f0f0;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
+    background: #f0f0f0;
   }
   
   #message {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 0;
     font-size: 32px;
     font-weight: bold;
