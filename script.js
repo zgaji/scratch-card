@@ -6,7 +6,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // Fill canvas with gray overlay
-ctx.fillStyle = '#FFC1DA';
+ctx.fillStyle = '#bfdda8';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 // Erasing mode
