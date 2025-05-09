@@ -75,7 +75,7 @@ function checkReveal() {
 
   const percent = transparentPixels / (canvas.width * canvas.height) * 100;
 
-  if (percent > 80) {
+  if (percent > 20) {
     revealed = true;
     showPopup()
   }
@@ -93,7 +93,7 @@ function showPopup() {
     popup.innerHTML = `
       <p>💌 Tayo nalang plss?</p>
       <button class="yes-btn">Yes!</button>
-      <button class="no-btn">No 😭</button>
+      <button class="no-btn">Ayaww</button>
     `;
 
     document.body.appendChild(popup);
@@ -146,10 +146,9 @@ function showPopup() {
       '<p>Real ba? :(</p>',
       '<p>Sure ka na?</p>',
       '<p>Last na to, promise 🥺</p>',
-      '<p>Mahal mo rin ako diba?</p>',
       '<p>😔 Okay lang, iiyak nalang ako</p>',
       `<p>Plsss? </p><img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" width="100" style="border-radius:10px; margin-top:10px;">`,
-      `<p>Lugmok na ko ☹️ </p><img src="https://tenor.com/view/rest-well-gif-5302436805447212231" width="100" style="border-radius:10px; margin-top:10px;">`
+      `<p>Lugmok na ko ☹️ </p><img src="https://media1.tenor.com/m/SZYKLlijXMcAAAAd/rest-well.gif" width="100" style="border-radius:10px; margin-top:10px; />>`
     ];
 
     const sadSounds = [
