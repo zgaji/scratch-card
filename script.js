@@ -151,12 +151,12 @@ function showPopup() {
         <div class="flap"></div>
         <div class="letter">
           <p>I’ve been waiting to feel the right moment to ask you—without the rush, without pressure. I’ve actually been</p><br>
-          <p>meaning to ask for maybe a month now, but I wanted to wait until I felt it was the right time.</p>
-          <p>I know we said we’d just see what happens. But now, I feel like finally asking would make everything real—</p>
-          <p>official. That we’d start facing everything together, because this would mean it’s no longer just a maybe.</p>
-          <p>If now isn’t the right time for you, if you feel like you still need space or clarity—that’s okay. I just want to be</p>
-          <p>honest with you about what I feel. And no matter what your answer is, I’ll still be here. Dito lang ako,</p>
-          <p>hanggang sa ayaw mo na.</p>
+          <p>meaning to ask for maybe a month now, but I wanted to wait until I felt it was the right time.</p><br>
+          <p>I know we said we’d just see what happens. But now, I feel like finally asking would make everything real—</p><br>
+          <p>official. That we’d start facing everything together, because this would mean it’s no longer just a maybe.</p><br>
+          <p>If now isn’t the right time for you, if you feel like you still need space or clarity—that’s okay. I just want to be</p><br>
+          <p>honest with you about what I feel. And no matter what your answer is, I’ll still be here. Dito lang ako,</p><br>
+          <p>hanggang sa ayaw mo na.</p><br><br>
           <p><strong>- Zari</strong></p>
           <button class="close-envelope">Close</button>
         </div>
