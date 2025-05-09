@@ -1,110 +1,110 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: 'Noto Sans', sans-serif;
-    background: linear-gradient(135deg, #fef9c2, #fff);
-  }
-  
-  #message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    font-size: 36px;
-    color: #f196a0;
-    text-align: center;
-    padding: 30px 40px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 24px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  #scratchCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    cursor: crosshair;
-  }
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Noto Sans', sans-serif;
+  background: linear-gradient(135deg, #fef9c2, #fff);
+}
 
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    color: #f196a0;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 24px;
-    text-align: center;
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    animation: popIn 0.3s ease-out;
-  }
-  
-  .popup button {
-    margin: 10px;
-    font-size: 20px;
-    background: #fef3c7;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .popup button:hover {
-    background: #fde68a;
-  }
-  
-  @keyframes popIn {
-    from { transform: scale(0.7) translate(-50%, -50%); opacity: 0; }
-    to { transform: scale(1) translate(-50%, -50%); opacity: 1; }
-  }
-  
-  @keyframes wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(2deg); }
-    50% { transform: rotate(-2deg); }
-    75% { transform: rotate(2deg); }
-    100% { transform: rotate(0deg); }
-  }
-  
-  .popup {
-    position: fixed;
-    max-width: 300px;
-    background: white;
-    color: #f196a0;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 24px;
-    text-align: center;
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    animation: popIn 0.3s ease-out, wiggle 0.4s ease-in-out infinite;
-  }
+#message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  font-size: 36px;
+  color: #f196a0;
+  text-align: center;
+  padding: 30px 40px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
 
-  .flower-field {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: url('https://i.imgur.com/2xqU4l8.png') repeat-x;
-    background-size: contain;
-    animation: fieldSway 5s ease-in-out infinite alternate;
-    z-index: 0; /* Behind scratch card */
-    pointer-events: none;
-    opacity: 0.8;
-  }
-  
-  @keyframes fieldSway {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(10px); }
-  }
+#scratchCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: #f196a0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  animation: popIn 0.3s ease-out, wiggle 0.4s ease-in-out infinite;
+}
+
+.popup button {
+  margin: 10px;
+  font-size: 20px;
+  background: #fef3c7;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.popup button:hover {
+  background: #fde68a;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.7) translate(-50%, -50%); opacity: 0; }
+  to { transform: scale(1) translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.flower-field {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.flower {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  animation: swayFlower 3s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+.flower1 { left: 10%; animation-delay: 0s; }
+.flower2 { left: 25%; animation-delay: 0.5s; }
+.flower3 { left: 40%; animation-delay: 1s; }
+.flower4 { left: 60%; animation-delay: 1.5s; }
+.flower5 { left: 80%; animation-delay: 2s; }
+
+.flower svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes swayFlower {
+  0% { transform: rotate(-2deg) translateY(0); }
+  100% { transform: rotate(2deg) translateY(-3px); }
+}
