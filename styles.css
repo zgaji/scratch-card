@@ -139,18 +139,17 @@ html, body {
 
 .close-envelope {
   margin-top: 20px;
-  padding: 8px 16px;
-  background-color: #f06292;
-  color: white;
+  font-size: 20px;
+  background: #fef3c7;
   border: none;
-  border-radius: 20px;
-  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s;
 }
 
 .close-envelope:hover {
-  background-color: #ec407a;
+  background: #fde68a;
 }
 
 
