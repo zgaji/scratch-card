@@ -75,7 +75,7 @@ function checkReveal() {
 
   const percent = transparentPixels / (canvas.width * canvas.height) * 100;
 
-  if (percent > 70) {
+  if (percent > 30) {
     revealed = true;
     showPopup();
   }
