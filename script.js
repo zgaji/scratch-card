@@ -48,7 +48,7 @@ canvas.addEventListener('touchmove', e => {
 
 function drawLine(x, y) {
   if (!isDrawing) return;
-  ctx.lineWidth = 30;
+  ctx.lineWidth = 40;
   ctx.lineCap = 'round';
   ctx.beginPath();
   ctx.moveTo(lastX, lastY);
@@ -67,7 +67,7 @@ function checkReveal() {
   }
 
   const percent = transparentPixels / (canvas.width * canvas.height) * 100;
-  if (percent >= 80) {
+  if (percent > 80) {
     revealed = true;
     showPopup();
   }
