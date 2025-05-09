@@ -143,12 +143,11 @@ function showPopup() {
     popup.classList.add('popup');
   
     const messages = [
-      '<p>Real ba? :(</p>',
+      '<p>Real ba? :( <img src="https://i.pinimg.com/736x/aa/62/e8/aa62e804da9030809731146c6960c802.jpg" width="100" style="border-radius:10px; margin-top:10px;"</p>',
       '<p>Sure ka na?</p>',
-      '<p>Last na to, promise 🥺</p>',
-      '<p>😔 Okay lang, iiyak nalang ako</p>',
+      '<p>😔 iyak nalang ako</p>',
       `<p>Plsss? </p><img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" width="100" style="border-radius:10px; margin-top:10px;">`,
-      `<p>Lugmok na ko ☹️ </p><img src="https://media1.tenor.com/m/SZYKLlijXMcAAAAd/rest-well.gif" width="100" style="border-radius:10px; margin-top:10px; />>`
+      `<p>Lugmok na ko ☹️ </p><img src="https://i.pinimg.com/736x/00/a2/51/00a2512606a9e7624651e163d57a392b.jpg" width="100" style="border-radius:10px; margin-top:10px; />>`
     ];
 
     const sadSounds = [
@@ -186,21 +185,31 @@ function showPopup() {
     };
   
     popup.querySelector('.no-btn').onclick = () => {
+      sadSounds.forEach(sound => {
+        sound.pause();
+        sound.currentTime = 0;
+      });
+
+      const randomSound = sadSounds[Math.floor(Math.random() * sadSounds.length)];
+      randomSound.play();
+
       popup.remove();
       noCount++;
       if (noCount < 5) {
-        for (let i = 0; i < noCount + 1; i++) {
-          // Play a random sad sound
-          const randomSound = sadSounds[Math.floor(Math.random() * sadSounds.length)];
-          if (randomSound) {
-            randomSound.currentTime = 0;
-            randomSound.play();
-          }
-
-          const randX = Math.random() * (window.innerWidth - 200);
-          const randY = Math.random() * (window.innerHeight - 150);
-          showRandomPopup(randX, randY);
-        }
+      for (let i = 0; i < noCount + 1; i++) {
+        const randX = Math.random() * (window.innerWidth - 200);
+        const randY = Math.random() * (window.innerHeight - 150);
+        createPopup(randX, randY);
+      }
+    } else {
+      const finalPopup = document.createElement('div');
+      finalPopup.classList.add('popup');
+      finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
+      finalPopup.style.top = `50%`;
+      finalPopup.style.left = `50%`;
+      finalPopup.style.transform = `translate(-50%, -50%)`;
+      document.body.appendChild(finalPopup);
+    
       }
     };
   }  
