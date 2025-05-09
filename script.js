@@ -116,15 +116,16 @@ function showPopup() {
     popup.querySelector('.no-btn').onclick = () => {
       noCount++;
       popup.remove();
+      // Play a random sad sound
+      const randomSound = sadSounds[Math.floor(Math.random() * sadSounds.length)];
+      if (randomSound) {
+        randomSound.currentTime = 0;
+        randomSound.play();
+      }
 
       if (noCount < 5) {
         for (let i = 0; i < noCount + 1; i++) {
-          // Play a random sad sound
-          const randomSound = sadSounds[Math.floor(Math.random() * sadSounds.length)];
-          if (randomSound) {
-            randomSound.currentTime = 0;
-            randomSound.play();
-          }
+          
 
           const randX = Math.random() * (window.innerWidth - 200);
           const randY = Math.random() * (window.innerHeight - 150);
