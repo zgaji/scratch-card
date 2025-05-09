@@ -83,53 +83,57 @@ function checkReveal() {
 
 let noCount = 0;
 
-function createPopup(x = null, y = null) {
-  const popup = document.createElement('div');
-  popup.classList.add('popup');
+function showPopup() {
+  createPopup();
 
-  popup.innerHTML = `
-    <p>💌 Tayo nalang plss?</p>
-    <button class="yes-btn">Yes!</button>
-    <button class="no-btn">No 😭</button>
-  `;
+  function createPopup(x = null, y = null) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
 
-  document.body.appendChild(popup);
+    popup.innerHTML = `
+      <p>💌 Tayo nalang plss?</p>
+      <button class="yes-btn">Yes!</button>
+      <button class="no-btn">No 😭</button>
+    `;
 
-  if (x !== null && y !== null) {
-    popup.style.top = `${y}px`;
-    popup.style.left = `${x}px`;
-    popup.style.transform = `translate(0, 0)`;
-  }
+    document.body.appendChild(popup);
 
-  popup.querySelector('.yes-btn').onclick = () => {
-    popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  };
-
-  popup.querySelector('.no-btn').onclick = () => {
-    noCount++;
-    popup.remove();
-
-    if (noCount < 5) {
-      for (let i = 0; i < noCount + 1; i++) {
-        const randX = Math.random() * (window.innerWidth - 200);
-        const randY = Math.random() * (window.innerHeight - 150);
-        showRandomPopup(randX, randY);
-      }
-    } else {
-      const finalPopup = document.createElement('div');
-      finalPopup.classList.add('popup');
-      finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
-      finalPopup.style.top = `50%`;
-      finalPopup.style.left = `50%`;
-      finalPopup.style.transform = `translate(-50%, -50%)`;
-      document.body.appendChild(finalPopup);
+    if (x !== null && y !== null) {
+      popup.style.top = `${y}px`;
+      popup.style.left = `${x}px`;
+      popup.style.transform = `translate(0, 0)`;
     }
-  };
+
+    popup.querySelector('.yes-btn').onclick = () => {
+      popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    };
+
+    popup.querySelector('.no-btn').onclick = () => {
+      noCount++;
+      popup.remove();
+
+      if (noCount < 5) {
+        for (let i = 0; i < noCount + 1; i++) {
+          const randX = Math.random() * (window.innerWidth - 200);
+          const randY = Math.random() * (window.innerHeight - 150);
+          showRandomPopup(randX, randY);
+        }
+      } else {
+        const finalPopup = document.createElement('div');
+        finalPopup.classList.add('popup');
+        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
+        finalPopup.style.top = `50%`;
+        finalPopup.style.left = `50%`;
+        finalPopup.style.transform = `translate(-50%, -50%)`;
+        document.body.appendChild(finalPopup);
+      }
+    };
+  }
 
   function showRandomPopup(x, y) {
     const popup = document.createElement('div');
