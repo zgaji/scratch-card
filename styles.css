@@ -74,37 +74,3 @@ html, body {
   75% { transform: rotate(2deg); }
   100% { transform: rotate(0deg); }
 }
-
-.flower-field {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 150px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.flower {
-  position: absolute;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  animation: swayFlower 3s ease-in-out infinite alternate;
-  opacity: 0.9;
-}
-
-.flower1 { left: 10%; animation-delay: 0s; }
-.flower2 { left: 25%; animation-delay: 0.5s; }
-.flower3 { left: 40%; animation-delay: 1s; }
-.flower4 { left: 60%; animation-delay: 1.5s; }
-.flower5 { left: 80%; animation-delay: 2s; }
-
-.flower svg {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes swayFlower {
-  0% { transform: rotate(-2deg) translateY(0); }
-  100% { transform: rotate(2deg) translateY(-3px); }
-}
