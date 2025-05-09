@@ -77,7 +77,7 @@ function checkReveal() {
 
   if (percent > 30) {
     revealed = true;
-    createPopup(window.innerWidth / 2, window.innerHeight / 2);
+    showPopup()
   }
 }
 
