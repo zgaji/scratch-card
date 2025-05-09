@@ -119,8 +119,16 @@ function showPopup() {
 
       if (noCount < 5) {
         for (let i = 0; i < noCount + 1; i++) {
+          // Play a random sad sound
+          const randomSound = sadSounds[Math.floor(Math.random() * sadSounds.length)];
+          if (randomSound) {
+            randomSound.currentTime = 0;
+            randomSound.play();
+          }
+
           const randX = Math.random() * (window.innerWidth - 200);
           const randY = Math.random() * (window.innerHeight - 150);
+
           showRandomPopup(randX, randY);
         }
       } else {
@@ -147,8 +155,14 @@ function showPopup() {
       '<p>Mahal mo rin ako diba?</p>',
       '<p>😔 Okay lang, iiyak nalang ako</p>',
       `<p>Plsss? </p><img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" width="100" style="border-radius:10px; margin-top:10px;">`,
-      `<p>Lugmok na ko ☹️ </p><img src="https://tenor.com/view/catsad-sad-cat-gif-7899328576816919173" width="100" style="border-radius:10px; margin-top:10px;">`
+      `<p>Lugmok na ko ☹️ </p><img src="https://tenor.com/view/rest-well-gif-5302436805447212231" width="100" style="border-radius:10px; margin-top:10px;">`
     ];
+
+    const sadSounds = [
+      document.getElementById('sound1'),
+      document.getElementById('sound2'),
+    ];
+    
 
     document.body.appendChild(popup);
 
