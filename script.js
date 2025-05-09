@@ -67,7 +67,7 @@ function checkReveal() {
   }
 
   const percent = transparentPixels / (canvas.width * canvas.height) * 100;
-  if (percent >= 80) {
+  if (percent >= 20) {
     revealed = true;
     showPopup();
   }
@@ -127,21 +127,23 @@ function showPopup() {
         finalPopup.style.left = `50%`;
         finalPopup.style.transform = `translate(-50%, -50%)`;
         document.body.appendChild(finalPopup);
+
+        const heheBtn = finalPopup.querySelector('.hehe-btn');
+        if (heheBtn) {
+          heheBtn.onclick = () => {
+            finalPopup.remove();
+            showEnvelope();
+          };
+        }
+
       }
     };
 
-    const heheBtn = popup.querySelector('.hehe-btn');
-    if (heheBtn){
-      heheBtn.onclick = () => {
-        popup.remove();
-        showEnvelope();
-      }
-    }
   }
 
   function showEnvelope(){
     const container = document.createElement('div');;
-    container.className = 'envelop-container';
+    container.className = 'envelope-container';
     container.innerHTML =`
     <div class="envelope"> 
       <div class="flap"></div>
