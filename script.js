@@ -83,93 +83,107 @@ function checkReveal() {
 
 let noCount = 0;
 
-function showPopup() {
-  createPopup();
+function createPopup(x = null, y = null) {
+  const popup = document.createElement('div');
+  popup.classList.add('popup');
 
-  function createPopup(x = null, y = null) {
+  popup.innerHTML = `
+    <p>💌 Tayo nalang plss?</p>
+    <button class="yes-btn">Yes!</button>
+    <button class="no-btn">No 😭</button>
+  `;
+
+  document.body.appendChild(popup);
+
+  if (x !== null && y !== null) {
+    popup.style.top = `${y}px`;
+    popup.style.left = `${x}px`;
+    popup.style.transform = `translate(0, 0)`;
+  }
+
+  popup.querySelector('.yes-btn').onclick = () => {
+    popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  };
+
+  popup.querySelector('.no-btn').onclick = () => {
+    noCount++;
+    popup.remove();
+
+    if (noCount < 5) {
+      for (let i = 0; i < noCount + 1; i++) {
+        const randX = Math.random() * (window.innerWidth - 200);
+        const randY = Math.random() * (window.innerHeight - 150);
+        showRandomPopup(randX, randY);
+      }
+    } else {
+      const finalPopup = document.createElement('div');
+      finalPopup.classList.add('popup');
+      finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
+      finalPopup.style.top = `50%`;
+      finalPopup.style.left = `50%`;
+      finalPopup.style.transform = `translate(-50%, -50%)`;
+      document.body.appendChild(finalPopup);
+    }
+  };
+
+  function showRandomPopup(x, y) {
     const popup = document.createElement('div');
+    
     popup.classList.add('popup');
-
-    popup.innerHTML = `
-      <p>💌 Tayo nalang plss?</p>
-      <button class="yes-btn">Yes!</button>
-      <button class="no-btn">Ayaw</button>
-    `;
+  
+    const messages = [
+      '<p>Real ba? :(</p>',
+      '<p>Sure ka na?</p>',
+      '<p>Last na to, promise 🥺</p>',
+      '<p>Mahal mo rin ako diba?</p>',
+      '<p>😔 Okay lang, iiyak nalang ako</p>',
+      `<p>Plsss? </p><img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" width="100" style="border-radius:10px; margin-top:10px;">`,
+      `<p>Lugmok na ko ☹️ </p><img src="https://tenor.com/view/catsad-sad-cat-gif-7899328576816919173" width="100" style="border-radius:10px; margin-top:10px;">`
+    ];
 
     document.body.appendChild(popup);
 
-    if (x !== null && y !== null) {
-      popup.style.top = `${y}px`;
-      popup.style.left = `${x}px`;
-      popup.style.transform = `translate(0, 0)`;
-    }
-
+    // Play sound
+    const sound = document.getElementById('sadSound');
+    if (sound) sound.play();
+  
+    popup.innerHTML = `
+      ${messages[Math.floor(Math.random() * messages.length)]}
+      <br>
+      <button class="yes-btn">Yes</button>
+      <button class="no-btn">Ayaww</button>
+    `;
+  
+    popup.style.top = `${y}px`;
+    popup.style.left = `${x}px`;
+    popup.style.transform = `translate(0, 0)`;
+  
+    document.body.appendChild(popup);
+  
     popup.querySelector('.yes-btn').onclick = () => {
-      popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
+      popup.innerHTML = `<p style="font-size:24px;">YAYY MWA!!! </p>`;
       confetti({
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 }
       });
     };
-
+  
     popup.querySelector('.no-btn').onclick = () => {
-      noCount++;
       popup.remove();
-
+      noCount++;
       if (noCount < 5) {
         for (let i = 0; i < noCount + 1; i++) {
           const randX = Math.random() * (window.innerWidth - 200);
           const randY = Math.random() * (window.innerHeight - 150);
-          createPopup(randX, randY);
+          showRandomPopup(randX, randY);
         }
-      } else {
-        const finalPopup = document.createElement('div');
-        finalPopup.classList.add('popup');
-        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 edi h'wag.</p>`;
-        finalPopup.style.top = `50%`;
-        finalPopup.style.left = `50%`;
-        finalPopup.style.transform = `translate(-50%, -50%)`;
-        document.body.appendChild(finalPopup);
       }
     };
-  }
-  document.addEventListener('DOMContentLoaded', () => {
-    const field = document.getElementById('flowerField');
-    const flowerCount = 40;
-  
-    const flowerSVGs = [
-      // 🌸 Pink flower
-      `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="10" fill="#FFD700"/><circle cx="50" cy="20" r="10" fill="#FF69B4"/><circle cx="80" cy="50" r="10" fill="#FF69B4"/><circle cx="50" cy="80" r="10" fill="#FF69B4"/><circle cx="20" cy="50" r="10" fill="#FF69B4"/></svg>`,
-  
-      // 🌼 Yellow flower
-      `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="12" fill="#FFA500"/><ellipse cx="50" cy="25" rx="8" ry="12" fill="#FFFF99"/><ellipse cx="75" cy="50" rx="8" ry="12" fill="#FFFF99" transform="rotate(45 75 50)"/><ellipse cx="50" cy="75" rx="8" ry="12" fill="#FFFF99"/><ellipse cx="25" cy="50" rx="8" ry="12" fill="#FFFF99" transform="rotate(-45 25 50)"/></svg>`,
-  
-      // 💜 Purple star flower
-      `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="10" fill="#9932CC"/><polygon points="50,20 60,40 80,40 65,55 70,75 50,65 30,75 35,55 20,40 40,40" fill="#DA70D6"/></svg>`,
-  
-      // 🔥 Orange bloom
-      `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="8" fill="#FF4500"/><path d="M50 20 Q60 40 50 60 Q40 40 50 20" fill="#FF7F7F"/><path d="M20 50 Q40 60 60 50 Q40 40 20 50" fill="#FF7F7F"/></svg>`,
-  
-      // 🤍 White petals
-      `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="6" fill="#FFFFFF"/><circle cx="50" cy="20" r="8" fill="#FFFFFF"/><circle cx="80" cy="50" r="8" fill="#FFFFFF"/><circle cx="50" cy="80" r="8" fill="#FFFFFF"/><circle cx="20" cy="50" r="8" fill="#FFFFFF"/></svg>`
-    ];
-  
-    for (let i = 0; i < flowerCount; i++) {
-      const flower = document.createElement('div');
-      flower.classList.add('flower');
-      flower.innerHTML = flowerSVGs[Math.floor(Math.random() * flowerSVGs.length)];
-  
-      const left = Math.random() * 100; // % position
-      const scale = 0.5 + Math.random(); // 0.5x to 1.5x
-      const delay = Math.random() * 2; // seconds
-  
-      flower.style.left = `${left}%`;
-      flower.style.transform = `scale(${scale})`;
-      flower.style.animationDelay = `${delay}s`;
-  
-      field.appendChild(flower);
-    }
-  });
-  
+  }  
 }
