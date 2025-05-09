@@ -2,21 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scratch to Reveal</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="message">🌸 Scratch to reveal something cute! 🌸</div>
+  <div id="message" class="message">Can I be</div>
   <canvas id="scratchCanvas"></canvas>
+  <script src="script.js"></script>
+  <audio id="sound1" src="sounds/tf_nemesis.mp3" preload="auto"></audio>
+  <audio id="sound2" src="sounds/sad-meow-song.mp3" preload="auto"></audio>
 
-  <!-- Sound effects -->
-  <audio id="sound1" src="sounds/sad1.mp3"></audio>
-  <audio id="sound2" src="sounds/sad2.mp3"></audio>
-
-  <!-- Confetti library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
