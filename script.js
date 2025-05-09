@@ -93,7 +93,7 @@ function showPopup() {
     popup.innerHTML = `
       <p>💌 Tayo nalang plss?</p>
       <button class="yes-btn">Yes!</button>
-      <button class="no-btn">No 😭</button>
+      <button class="no-btn">Ayaw</button>
     `;
 
     document.body.appendChild(popup);
@@ -126,7 +126,7 @@ function showPopup() {
       } else {
         const finalPopup = document.createElement('div');
         finalPopup.classList.add('popup');
-        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
+        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 edi h'wag.</p>`;
         finalPopup.style.top = `50%`;
         finalPopup.style.left = `50%`;
         finalPopup.style.transform = `translate(-50%, -50%)`;
