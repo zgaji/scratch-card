@@ -81,27 +81,57 @@ function checkReveal() {
   }
 }
 
-function showPopup() {
-  const popup = document.createElement('div');
-  popup.innerHTML = `
-    <div class="popup">
-      <p>💌 Will you go out with me?</p>
-      <button id="yes">Yes!</button>
-      <button id="no">No 😭</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
+let noCount = 0;
 
-  document.getElementById('yes').onclick = () => {
-    popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
-    confetti({
+function showPopup() {
+  createPopup();
+
+  function createPopup(x = null, y = null) {
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+
+    popup.innerHTML = `
+      <p>💌 Tayo nalang plss?</p>
+      <button class="yes-btn">Yes!</button>
+      <button class="no-btn">No 😭</button>
+    `;
+
+    document.body.appendChild(popup);
+
+    if (x !== null && y !== null) {
+      popup.style.top = `${y}px`;
+      popup.style.left = `${x}px`;
+      popup.style.transform = `translate(0, 0)`;
+    }
+
+    popup.querySelector('.yes-btn').onclick = () => {
+      popup.innerHTML = `<p style="font-size:24px;">Yay!! 🎉💖</p>`;
+      confetti({
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 }
       });
-  };
+    };
 
-  document.getElementById('no').onclick = () => {
-    popup.innerHTML = `<p style="font-size:24px;">Aww okay... 💔</p>`;
-  };
+    popup.querySelector('.no-btn').onclick = () => {
+      noCount++;
+      popup.remove();
+
+      if (noCount < 5) {
+        for (let i = 0; i < noCount + 1; i++) {
+          const randX = Math.random() * (window.innerWidth - 200);
+          const randY = Math.random() * (window.innerHeight - 150);
+          createPopup(randX, randY);
+        }
+      } else {
+        const finalPopup = document.createElement('div');
+        finalPopup.classList.add('popup');
+        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
+        finalPopup.style.top = `50%`;
+        finalPopup.style.left = `50%`;
+        finalPopup.style.transform = `translate(-50%, -50%)`;
+        document.body.appendChild(finalPopup);
+      }
+    };
+  }
 }

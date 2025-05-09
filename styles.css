@@ -67,4 +67,25 @@ html, body {
     to { transform: scale(1) translate(-50%, -50%); opacity: 1; }
   }
   
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+  }
   
+  .popup {
+    position: fixed;
+    max-width: 300px;
+    background: white;
+    color: #f196a0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    animation: popIn 0.3s ease-out, wiggle 0.4s ease-in-out infinite;
+  }
