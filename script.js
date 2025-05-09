@@ -143,11 +143,11 @@ function showPopup() {
     popup.classList.add('popup');
   
     const messages = [
-      '<p>Real ba? :( <img src="https://i.pinimg.com/736x/aa/62/e8/aa62e804da9030809731146c6960c802.jpg" width="100" style="border-radius:10px; margin-top:10px;"</p>',
+      `<p>Real ba? :( </p> <img src="https://i.pinimg.com/736x/aa/62/e8/aa62e804da9030809731146c6960c802.jpg" width="100" style="border-radius:10px;">`,
       '<p>Sure ka na?</p>',
       '<p>😔 iyak nalang ako</p>',
-      `<p>Plsss? </p><img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" width="100" style="border-radius:10px; margin-top:10px;">`,
-      `<p>Lugmok na ko ☹️ </p><img src="https://i.pinimg.com/736x/00/a2/51/00a2512606a9e7624651e163d57a392b.jpg" width="100" style="border-radius:10px; margin-top:10px; />>`
+      `<p>Plsss? </p><img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" width="100" style="border-radius:10px;">`,
+      `<p>Lugmok na ko ☹️ </p><img src="https://i.pinimg.com/736x/00/a2/51/00a2512606a9e7624651e163d57a392b.jpg" width="100" style="border-radius:10px;">`
     ];
 
     const sadSounds = [
