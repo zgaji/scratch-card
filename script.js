@@ -67,7 +67,7 @@ function checkReveal() {
   }
 
   const percent = transparentPixels / (canvas.width * canvas.height) * 100;
-  if (percent > 20) {
+  if (percent >= 80) {
     revealed = true;
     showPopup();
   }
@@ -121,13 +121,34 @@ function showPopup() {
       } else {
         const finalPopup = document.createElement('div');
         finalPopup.classList.add('popup');
-        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... 😤 I give up.</p>`;
+        finalPopup.innerHTML = `<p style="font-size:22px;">Okay fine... Next time nalang ulitt 😤</p>
+                                <button class="hehe-btn">hehe</button>`;
         finalPopup.style.top = `50%`;
         finalPopup.style.left = `50%`;
         finalPopup.style.transform = `translate(-50%, -50%)`;
         document.body.appendChild(finalPopup);
       }
     };
+
+    const heheBtn = popup.querySelector('.hehe-btn');
+    if (heheBtn){
+      heheBtn.onclick = () => {
+        popup.remove();
+        showEnvelope();
+      }
+    }
+  }
+
+  function showEnvelope(){
+    const container = document.createElement('div');;
+    container.className = 'envelop-container';
+    container.innerHTML =`
+    <div class="envelope"> 
+      <div class="flap"></div>
+      <div class="letter">Dito lang ako :)) <br><br>Zari</div>
+    </div>
+    `;
+    document.body.appendChild(container);
   }
 
   function showRandomPopup(x, y) {
