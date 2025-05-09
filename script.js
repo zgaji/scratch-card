@@ -131,7 +131,7 @@ function showPopup() {
         const heheBtn = finalPopup.querySelector('.hehe-btn');
         if (heheBtn) {
           heheBtn.onclick = () => {
-            finalPopup.remove();
+            document.querySelectorAll('.popup').forEach(p => p.remove()); // Remove all popups
             showEnvelope();
           };
         }
@@ -141,16 +141,28 @@ function showPopup() {
 
   }
 
-  function showEnvelope(){
-    const container = document.createElement('div');;
+  function showEnvelope() {
+    document.querySelectorAll('.popup').forEach(p => p.remove());
+  
+    const container = document.createElement('div');
     container.className = 'envelope-container';
-    container.innerHTML =`
-    <div class="envelope"> 
-      <div class="flap"></div>
-      <div class="letter">Dito lang ako :)) <br><br>Zari</div>
-    </div>
+    container.innerHTML = `
+      <div class="envelope"> 
+        <div class="flap"></div>
+        <div class="letter">
+          <p>Dito lang ako :))</p>
+          <p><strong>- Zari</strong></p>
+          <button class="close-envelope">Close</button>
+        </div>
+      </div>
     `;
     document.body.appendChild(container);
+  
+    // Add close functionality
+    const closeBtn = container.querySelector('.close-envelope');
+    closeBtn.onclick = () => {
+      container.remove();
+    };
   }
 
   function showRandomPopup(x, y) {
