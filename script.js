@@ -39,12 +39,34 @@ canvas.addEventListener('touchend', () => {
 });
 canvas.addEventListener('touchcancel', () => isDrawing = false);
 canvas.addEventListener('touchmove', e => {
+  lastX = touch.clientX - rect.left;
+  lastY = touch.clientY - rect.top;
+
   e.preventDefault();
   if (!isDrawing) return;
   const touch = e.touches[0];
   const rect = canvas.getBoundingClientRect();
   drawLine(touch.clientX - rect.left, touch.clientY - rect.top);
 });
+
+const duration = 2 * 1000;
+const end = Date.now() + duration;
+
+const interval = setInterval(function() {
+  if (Date.now() > end) {
+    clearInterval(interval);
+  }
+  confetti({
+    particleCount: 50,
+    startVelocity: 30,
+    spread: 360,
+    ticks: 60,
+    origin: {
+      x: Math.random(),
+      y: Math.random() - 0.2
+    }
+  });
+}, 250);
 
 function drawLine(x, y) {
   if (!isDrawing) return;
@@ -197,4 +219,11 @@ function showPopup() {
     document.body.appendChild(popup);
     addPopupListeners(popup);
   }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.fillStyle = '#bfdda8';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  });
 }
