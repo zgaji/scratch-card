@@ -13,13 +13,14 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  font-size: 36px;
+  font-size: 4vw;
   color: #f196a0;
   text-align: center;
-  padding: 30px 40px;
+  padding: 5vw 6vw;
   background: rgba(255, 255, 255, 0.85);
-  border-radius: 24px;
+  border-radius: 6vw;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  max-width: 90vw;
 }
 
 #scratchCanvas {
@@ -28,6 +29,8 @@ html, body {
   left: 0;
   z-index: 1;
   cursor: crosshair;
+  width: 100vw;
+  height: 100vh;
 }
 
 .popup {
@@ -38,22 +41,23 @@ html, body {
   background: white;
   color: #f196a0;
   font-family: 'Noto Sans', sans-serif;
-  font-size: 24px;
+  font-size: 5vw;
   text-align: center;
-  padding: 30px 40px;
-  border-radius: 20px;
+  padding: 6vw;
+  border-radius: 5vw;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   z-index: 999;
   animation: popIn 0.3s ease-out, wiggle 0.4s ease-in-out infinite;
+  max-width: 90vw;
 }
 
 .popup button {
-  margin: 10px;
-  font-size: 20px;
+  margin: 2vw;
+  font-size: 4vw;
   background: #fef3c7;
   border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
+  border-radius: 3vw;
+  padding: 3vw 5vw;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -62,6 +66,70 @@ html, body {
   background: #fde68a;
 }
 
+/* Envelope styles */
+.envelope-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 520px;
+  height: auto;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+}
+
+.envelope {
+  width: 100%;
+  height: auto;
+  background: #fff4d7;
+  border: 2px solid #e4cfa6;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.flap {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  background: #f2d2bd;
+  transform-origin: top center;
+  animation: openFlap 1s ease forwards;
+  z-index: 2;
+}
+
+.letter {
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #f196a0;
+  padding: 5vw;
+  font-size: 4vw;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1.4;
+  animation: slideUp 1s ease forwards 1s;
+}
+
+.close-envelope {
+  margin-top: 4vw;
+  font-size: 4vw;
+  background: #fef3c7;
+  border: none;
+  border-radius: 2vw;
+  padding: 3vw 6vw;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.close-envelope:hover {
+  background: #fde68a;
+}
+
+/* Animations remain unchanged */
 @keyframes popIn {
   from { transform: scale(0.7) translate(-50%, -50%); opacity: 0; }
   to { transform: scale(1) translate(-50%, -50%); opacity: 1; }
@@ -75,56 +143,6 @@ html, body {
   100% { transform: rotate(0deg); }
 }
 
-.envelope-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 520px;
-  height: 600px;
-  z-index: 1000;
-  animation: fadeIn 0.5s ease;
-}
-
-.envelope {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #fff4d7;
-  border: 2px solid #e4cfa6;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: #f2d2bd;
-  transform-origin: top center;
-  animation: openFlap 1s ease forwards;
-  z-index: 2;
-}
-
-
-.letter {
-  position: absolute;
-  bottom: -100%;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  color: #f196a0;
-  padding: 20px;
-  font-size: 16px;
-  box-sizing: border-box;
-  text-align: center;
-  line-height: 1.4;
-  animation: slideUp 1s ease forwards 1s;
-}
-
 @keyframes openFlap {
   to {
     transform: rotateX(180deg);
@@ -136,22 +154,6 @@ html, body {
     bottom: 0;
   }
 }
-
-.close-envelope {
-  margin-top: 20px;
-  font-size: 20px;
-  background: #fef3c7;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.close-envelope:hover {
-  background: #fde68a;
-}
-
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.9) translate(-50%, -50%); }
