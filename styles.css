@@ -420,3 +420,172 @@ html, body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
 }
+
+.wildflower-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wildflower {
+  position: absolute;
+  bottom: -20px;
+  width: 30px;
+  height: 80px;
+  transform-origin: bottom center;
+  animation: sway 3s ease-in-out infinite;
+}
+
+.wildflower::before {
+  content: '🌸';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: flowerBob 3s ease-in-out infinite;
+}
+
+.wildflower:nth-child(2n)::before {
+  content: '🌼';
+}
+
+.wildflower:nth-child(3n)::before {
+  content: '🌺';
+}
+
+.wildflower:nth-child(4n)::before {
+  content: '🌷';
+}
+
+.wildflower::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, #7ea04d, #a0c334);
+  transform-origin: bottom center;
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes flowerBob {
+  0%, 100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-50%) rotate(8deg);
+  }
+  75% {
+    transform: translateX(-50%) rotate(-8deg);
+  }
+}
+
+/* Position the flowers across the bottom */
+.wildflower:nth-child(1) { left: 5%; animation-delay: 0s; }
+.wildflower:nth-child(2) { left: 15%; animation-delay: 0.2s; }
+.wildflower:nth-child(3) { left: 25%; animation-delay: 0.4s; }
+.wildflower:nth-child(4) { left: 35%; animation-delay: 0.6s; }
+.wildflower:nth-child(5) { left: 45%; animation-delay: 0.8s; }
+.wildflower:nth-child(6) { left: 55%; animation-delay: 1.0s; }
+.wildflower:nth-child(7) { left: 65%; animation-delay: 1.2s; }
+.wildflower:nth-child(8) { left: 75%; animation-delay: 1.4s; }
+.wildflower:nth-child(9) { left: 85%; animation-delay: 1.6s; }
+.wildflower:nth-child(10) { left: 95%; animation-delay: 1.8s; }
+
+/* Add some depth with different heights */
+.wildflower:nth-child(2n) {
+  height: 90px;
+}
+
+.wildflower:nth-child(3n) {
+  height: 70px;
+}
+
+.wildflower:nth-child(4n) {
+  height: 85px;
+}
+
+/* Add some grass blades for extra detail */
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(126, 160, 77, 0.2));
+  z-index: -1;
+}
+
+.grass::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, rgba(126, 160, 77, 0.3));
+}
+
+/* Add some floating particles for a dreamy effect */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 4s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wildflower-container {
+    height: 120px;
+  }
+  
+  .wildflower {
+    transform-origin: bottom center;
+    scale: 0.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .wildflower-container {
+    height: 100px;
+  }
+  
+  .wildflower {
+    scale: 0.7;
+  }
+}

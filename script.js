@@ -274,3 +274,35 @@ function showPopup() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   });
 }
+
+// Add wildflower container
+function createWildflowers() {
+  const container = document.createElement('div');
+  container.className = 'wildflower-container';
+  
+  // Add grass background
+  const grass = document.createElement('div');
+  grass.className = 'grass';
+  container.appendChild(grass);
+  
+  // Add wildflowers
+  for (let i = 0; i < 10; i++) {
+    const flower = document.createElement('div');
+    flower.className = 'wildflower';
+    container.appendChild(flower);
+  }
+  
+  // Add floating particles
+  for (let i = 0; i < 15; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.animationDelay = `${Math.random() * 4}s`;
+    container.appendChild(particle);
+  }
+  
+  document.body.appendChild(container);
+}
+
+// Call the function when the page loads
+window.addEventListener('load', createWildflowers);
