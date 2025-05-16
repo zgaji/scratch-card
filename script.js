@@ -128,7 +128,24 @@ function showPopup() {
     yesBtn.onclick = () => {
       sounds.forEach(s => { s.pause(); s.currentTime = 0; });
       document.querySelectorAll('.popup').forEach(p => p.remove());
-      celebrateWithConfetti();
+      
+      // Create and show the kiss popup
+      const kissPopup = document.createElement('div');
+      kissPopup.classList.add('popup');
+      kissPopup.innerHTML = `
+        <div class="popup-content">
+          <p>Yay ! Kiss pls 💋</p>
+          <button class="kiss-btn">😘</button>
+        </div>
+      `;
+      document.body.appendChild(kissPopup);
+
+      // Add click handler for the kiss button
+      const kissBtn = kissPopup.querySelector('.kiss-btn');
+      kissBtn.onclick = () => {
+        kissPopup.remove();
+        celebrateWithConfetti();
+      };
     };
 
     noBtn.onclick = () => {
