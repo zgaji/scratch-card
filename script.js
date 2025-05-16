@@ -129,12 +129,15 @@ function showPopup() {
       sounds.forEach(s => { s.pause(); s.currentTime = 0; });
       document.querySelectorAll('.popup').forEach(p => p.remove());
       
+      // Trigger initial confetti celebration
+      celebrateWithConfetti();
+      
       // Create and show the kiss popup
       const kissPopup = document.createElement('div');
       kissPopup.classList.add('popup');
       kissPopup.innerHTML = `
         <div class="popup-content">
-          <p>Yay ! Kiss pls 💋</p>
+          <p>yay !!! kiss pls </p>
           <button class="kiss-btn">😘</button>
         </div>
       `;
@@ -144,7 +147,7 @@ function showPopup() {
       const kissBtn = kissPopup.querySelector('.kiss-btn');
       kissBtn.onclick = () => {
         kissPopup.remove();
-        celebrateWithConfetti();
+        celebrateWithConfetti(); // Trigger confetti again
       };
     };
 
