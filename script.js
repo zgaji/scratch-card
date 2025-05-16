@@ -204,14 +204,6 @@ function showPopup() {
           </p>
 
           <p>
-            I am not good with words or expressing my feelings. I've been waiting para sa the right moment 
-            to ask you—without the rush (actually, na-rush na talaga kasi mamatay na yung flowers HAHAHHAHA), 
-            without pressure to make things official or lagyan na ng label. I've actually been meaning to ask 
-            for maybe a month now, naghihintay lang ako para sa right time to ask (+maarte ako—andami kong 
-            kaartehan na inisip if pano kita iaask).
-          </p>
-
-          <p>
             I’ve never been great with words or expressing how I feel, and I’ve been waiting for the right 
             moment to ask you—without rush, without pressure. (Though honestly, medyo na-rush 
             na rin kasi malalanta na yung flowers HAHAHAHAHAH.)
