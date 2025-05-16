@@ -72,6 +72,8 @@ html, body {
   transition: all 0.3s;
   -webkit-tap-highlight-color: transparent;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  color: #e47686;
 }
 
 .popup button:hover {
@@ -188,6 +190,8 @@ html, body {
   margin-right: auto;
   position: relative;
   overflow: hidden;
+  font-weight: 700;
+  color: #e47686;
 }
 
 .close-envelope::before {
