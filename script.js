@@ -167,7 +167,7 @@ function showPopup() {
         const finalPopup = document.createElement('div');
         finalPopup.classList.add('popup');
         finalPopup.innerHTML = `
-          <p style="font-size:20px;">Sige na nga... 🥺<br>Next time nalang ulit ako magtry</p>
+          <p style="font-size:20px;">okayyy, edi h'wag ☹️<br> try again next time</p>
           <button class="hehe-btn">hehe</button>
         `;
         finalPopup.style.top = `50%`;
