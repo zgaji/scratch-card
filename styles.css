@@ -435,54 +435,211 @@ html, body {
 .wildflower {
   position: absolute;
   bottom: -20px;
-  width: 30px;
-  height: 80px;
+  width: 40px;
+  height: 100px;
   transform-origin: bottom center;
   animation: sway 3s ease-in-out infinite;
 }
 
-.wildflower::before {
-  content: '🌸';
+/* Flower head styles */
+.flower-head {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 24px;
+  width: 30px;
+  height: 30px;
   animation: flowerBob 3s ease-in-out infinite;
 }
 
-.wildflower:nth-child(2n)::before {
-  content: '🌼';
+/* Petal styles */
+.petal {
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  background: #ffb7c5;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: bottom center;
 }
 
-.wildflower:nth-child(3n)::before {
-  content: '🌺';
-}
-
-.wildflower:nth-child(4n)::before {
-  content: '🌷';
-}
-
-.wildflower::after {
+.petal::after {
   content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4));
+  border-radius: inherit;
+}
+
+/* Position petals in a circle */
+.petal:nth-child(1) {
+  transform: rotate(0deg) translateY(-10px);
+  animation: petalWave 2s ease-in-out infinite;
+}
+
+.petal:nth-child(2) {
+  transform: rotate(72deg) translateY(-10px);
+  animation: petalWave 2s ease-in-out infinite 0.4s;
+}
+
+.petal:nth-child(3) {
+  transform: rotate(144deg) translateY(-10px);
+  animation: petalWave 2s ease-in-out infinite 0.8s;
+}
+
+.petal:nth-child(4) {
+  transform: rotate(216deg) translateY(-10px);
+  animation: petalWave 2s ease-in-out infinite 1.2s;
+}
+
+.petal:nth-child(5) {
+  transform: rotate(288deg) translateY(-10px);
+  animation: petalWave 2s ease-in-out infinite 1.6s;
+}
+
+/* Flower center */
+.flower-center {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #ffd700;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: centerPulse 2s ease-in-out infinite;
+}
+
+/* Stem and leaves */
+.stem {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 2px;
-  height: 60px;
+  width: 3px;
+  height: 70px;
   background: linear-gradient(to bottom, #7ea04d, #a0c334);
   transform-origin: bottom center;
 }
 
+.leaf {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: #90c853;
+  border-radius: 100% 0 100% 0;
+  transform-origin: 0 50%;
+}
+
+.leaf::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3));
+  border-radius: inherit;
+}
+
+.leaf:nth-child(1) {
+  left: 4px;
+  top: 30%;
+  transform: rotate(30deg);
+  animation: leafWave 3s ease-in-out infinite;
+}
+
+.leaf:nth-child(2) {
+  right: 4px;
+  top: 60%;
+  transform: rotate(150deg) scaleX(-1);
+  animation: leafWave 3s ease-in-out infinite 0.5s;
+}
+
+/* Flower variations */
+.wildflower:nth-child(2n) .petal {
+  background: #fff7ad;
+}
+
+.wildflower:nth-child(3n) .petal {
+  background: #ffc0cb;
+}
+
+.wildflower:nth-child(4n) .petal {
+  background: #e6e6fa;
+}
+
+/* Animations */
+@keyframes petalWave {
+  0%, 100% {
+    transform: rotate(var(--rotation)) translateY(-10px);
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) + 5deg)) translateY(-12px) scale(1.1);
+  }
+}
+
+@keyframes leafWave {
+  0%, 100% {
+    transform: rotate(var(--rotation));
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) + 10deg));
+  }
+}
+
+@keyframes centerPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Add shimmer effect to petals */
+.petal {
+  position: relative;
+  overflow: hidden;
+}
+
+.petal::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Update existing animations */
 @keyframes sway {
   0%, 100% {
     transform: rotate(0deg);
   }
   25% {
-    transform: rotate(6deg);
+    transform: rotate(6deg) translateX(2px);
   }
   75% {
-    transform: rotate(-6deg);
+    transform: rotate(-6deg) translateX(-2px);
   }
 }
 
@@ -491,10 +648,10 @@ html, body {
     transform: translateX(-50%) rotate(0deg);
   }
   25% {
-    transform: translateX(-50%) rotate(8deg);
+    transform: translateX(-50%) rotate(8deg) translateY(-2px);
   }
   75% {
-    transform: translateX(-50%) rotate(-8deg);
+    transform: translateX(-50%) rotate(-8deg) translateY(2px);
   }
 }
 

@@ -289,6 +289,38 @@ function createWildflowers() {
   for (let i = 0; i < 10; i++) {
     const flower = document.createElement('div');
     flower.className = 'wildflower';
+    
+    // Create flower head
+    const flowerHead = document.createElement('div');
+    flowerHead.className = 'flower-head';
+    
+    // Add petals
+    for (let j = 0; j < 5; j++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.setProperty('--rotation', `${j * 72}deg`);
+      flowerHead.appendChild(petal);
+    }
+    
+    // Add flower center
+    const center = document.createElement('div');
+    center.className = 'flower-center';
+    flowerHead.appendChild(center);
+    
+    // Add stem
+    const stem = document.createElement('div');
+    stem.className = 'stem';
+    
+    // Add leaves
+    for (let k = 0; k < 2; k++) {
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf';
+      leaf.style.setProperty('--rotation', k === 0 ? '30deg' : '150deg');
+      stem.appendChild(leaf);
+    }
+    
+    flower.appendChild(flowerHead);
+    flower.appendChild(stem);
     container.appendChild(flower);
   }
   
