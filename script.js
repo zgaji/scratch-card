@@ -49,24 +49,27 @@ canvas.addEventListener('touchmove', e => {
   drawLine(touch.clientX - rect.left, touch.clientY - rect.top);
 });
 
-const duration = 2 * 1000;
-const end = Date.now() + duration;
+function celebrateWithConfetti() {
+  const duration = 2 * 1000;
+  const end = Date.now() + duration;
 
-const interval = setInterval(function() {
-  if (Date.now() > end) {
-    clearInterval(interval);
-  }
-  confetti({
-    particleCount: 50,
-    startVelocity: 30,
-    spread: 360,
-    ticks: 60,
-    origin: {
-      x: Math.random(),
-      y: Math.random() - 0.2
+  const interval = setInterval(function() {
+    if (Date.now() > end) {
+      clearInterval(interval);
+      return;
     }
-  });
-}, 250);
+    confetti({
+      particleCount: 50,
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      origin: {
+        x: Math.random(),
+        y: Math.random() - 0.2
+      }
+    });
+  }, 250);
+}
 
 function drawLine(x, y) {
   if (!isDrawing) return;
@@ -125,7 +128,13 @@ function showPopup() {
     yesBtn.onclick = () => {
       sounds.forEach(s => { s.pause(); s.currentTime = 0; });
       document.querySelectorAll('.popup').forEach(p => p.remove());
-      confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+      celebrateWithConfetti();
+      confetti({ 
+        particleCount: 150, 
+        spread: 70, 
+        origin: { y: 0.6 },
+        colors: ['#ff9999', '#ffb3b3', '#ff8080', '#ffcccc', '#ff6666']
+      });
     };
 
     noBtn.onclick = () => {
@@ -172,12 +181,12 @@ function showPopup() {
       <div class="envelope"> 
         <div class="flap"></div>
         <div class="letter">
-          <p>I’ve been waiting to feel the right moment to ask you—without the rush, without pressure. I’ve actually been</p>
+          <p>I've been waiting to feel the right moment to ask you—without the rush, without pressure. I've actually been</p>
           <p>meaning to ask for maybe a month now, but I wanted to wait until I felt it was the right time.</p>
-          <p>I know we said we’d just see what happens. But now, I feel like finally asking would make everything real—</p>
-          <p>official. That we’d start facing everything together, because this would mean it’s no longer just a maybe.</p>
-          <p>If now isn’t the right time for you, if you feel like you still need space or clarity—that’s okay. I just want to be</p>
-          <p>honest with you about what I feel. And no matter what your answer is, I’ll still be here. Dito lang ako,</p>
+          <p>I know we said we'd just see what happens. But now, I feel like finally asking would make everything real—</p>
+          <p>official. That we'd start facing everything together, because this would mean it's no longer just a maybe.</p>
+          <p>If now isn't the right time for you, if you feel like you still need space or clarity—that's okay. I just want to be</p>
+          <p>honest with you about what I feel. And no matter what your answer is, I'll still be here. Dito lang ako,</p>
           <p>hanggang sa ayaw mo na.</p><br><br>
           <p><strong>- Zari</strong></p>
           <button class="close-envelope">Close</button>

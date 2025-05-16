@@ -90,17 +90,30 @@ html, body {
   aspect-ratio: 1.2;
   z-index: 1000;
   animation: fadeIn 0.5s ease;
+  perspective: 1000px;
 }
 
 .envelope {
   width: 100%;
   height: 100%;
-  background: #fff4d7;
+  background: linear-gradient(145deg, #fff4d7, #ffe4b5);
   border: 2px solid #e4cfa6;
   border-radius: min(3vw, 24px);
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   position: relative;
+  transform-style: preserve-3d;
+}
+
+.envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+  pointer-events: none;
 }
 
 .flap {
@@ -109,11 +122,22 @@ html, body {
   left: 0;
   width: 100%;
   height: 50%;
-  background: #f2d2bd;
+  background: linear-gradient(145deg, #f2d2bd, #e4c4a9);
   transform-origin: top center;
-  animation: openFlap 1s ease forwards;
+  animation: openFlap 1.2s ease-in-out forwards;
   z-index: 2;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #e4cfa6;
+}
+
+.flap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .letter {
@@ -121,22 +145,37 @@ html, body {
   bottom: -100%;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: linear-gradient(to bottom, #fff, #f8f8f8);
   color: #f196a0;
   padding: min(5vw, 40px);
-  font-size: clamp(16px, 4vw, 24px);
+  font-size: clamp(16px, 3vw, 20px);
   box-sizing: border-box;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.6;
   animation: slideUp 1s ease forwards 1s;
   border-radius: min(2vw, 16px);
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.letter p {
+  margin: 0.8em 0;
+  text-align: left;
+  opacity: 0;
+  animation: fadeInText 0.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.letter strong {
+  color: #e47686;
+  font-size: 1.1em;
 }
 
 .close-envelope {
   margin-top: min(4vw, 32px);
   font-size: clamp(16px, 4vw, 24px);
-  background: #fef3c7;
+  background: linear-gradient(to bottom right, #fef3c7, #fde68a);
   border: none;
   border-radius: min(2vw, 16px);
   padding: min(2.5vw, 20px) min(4vw, 32px);
@@ -147,15 +186,71 @@ html, body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.close-envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.close-envelope:hover::before {
+  left: 100%;
 }
 
 .close-envelope:hover {
-  background: #fde68a;
+  background: linear-gradient(to bottom right, #fde68a, #fcd34d);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Animations */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes openFlap {
+  0% {
+    transform: rotateX(0deg);
+    background: linear-gradient(145deg, #f2d2bd, #e4c4a9);
+  }
+  100% {
+    transform: rotateX(180deg);
+    background: linear-gradient(145deg, #e4c4a9, #f2d2bd);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    bottom: -100%;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes popIn {
   from { 
     transform: scale(0.7) translate(-50%, -50%); 
@@ -175,26 +270,6 @@ html, body {
   50% { transform: translate(-50%, -50%) rotate(-1deg); }
   75% { transform: translate(-50%, -50%) rotate(1deg); }
   100% { transform: translate(-50%, -50%) rotate(0deg); }
-}
-
-@keyframes openFlap {
-  from {
-    transform: rotateX(0deg);
-  }
-  to {
-    transform: rotateX(180deg);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    bottom: -100%;
-    opacity: 0;
-  }
-  to {
-    bottom: 0;
-    opacity: 1;
-  }
 }
 
 @keyframes fadeIn {
@@ -224,12 +299,15 @@ html, body {
   }
   
   .letter {
+    font-size: clamp(14px, 3.5vw, 16px);
     padding: 20px;
+    line-height: 1.5;
   }
 
   .close-envelope {
     width: 100%;
     max-width: 280px;
+    margin-top: 20px;
   }
 }
 
@@ -259,11 +337,9 @@ html, body {
   }
   
   .letter {
-    font-size: clamp(14px, 3vw, 20px);
+    font-size: clamp(12px, 2.5vw, 14px);
     padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: 1.4;
   }
 
   .popup {
