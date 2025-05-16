@@ -196,7 +196,11 @@ function showPopup() {
         <div class="flap"></div>
         <div class="letter">
           <p>
-            The first thing that you asked me for sa bar (aside sa name ko ofc) is to be honest with you.
+            The first thing you ever asked me at the bar—aside from my name—was to be honest with you.
+          </p>
+          
+          <p>
+            And so, here I am.
           </p>
 
           <p>
@@ -208,17 +212,29 @@ function showPopup() {
           </p>
 
           <p>
-            I know na sinabi natin na we'll just see what happens. But now, I feel like finally asking would 
-            make everything real—official. To be honest, I'm unsure if paano iaaproach yung sa family mo, 
-            I just know na when the time comes, I'll be there for you or kung ano mang maging desisyon mo. 
-            I don't ever want you to be pressured about any of this, especially knowing the situation sa 
-            family mo.
+            I’ve never been great with words or expressing how I feel, and I’ve been waiting for the right 
+            moment to ask you—without rush, without pressure. (Though honestly, medyo na-rush 
+            na rin kasi malalanta na yung flowers HAHAHAHAHAH.)
           </p>
 
           <p>
-            If now isn't the right time for you, if you feel like you still need space or clarity—that's okay. 
-            I just want to be honest with you about what I feel. And no matter what your answer is, I'll still 
-            be here. Dito lang ako, hanggang sa ayaw mo na.
+            I’ve actually been meaning to ask for about a month now, pero ang dami ko pang arte sa isip—thinking 
+            of the right way, the right timing, the right everything.
+          </p>
+          
+          <p>We said we’d just see where this goes, and I really held on to that. But now, I feel like I’m ready 
+            to make it real—to finally ask you, officially.
+          </p>
+          
+          <p>I’m still unsure how to navigate things pagdating sa family mo. But want you to know that whatever 
+          happens, whatever you decide—I’ll be here. I’ll be with you through it, no pressure, no rush.
+          </p>
+          
+          <p>If now isn’t the right time for you, or if you need more clarity or space, I understand. 
+          I just want to be honest about what I feel—because I really do like you a lot, my Micole.
+          </p>
+          
+          <p>And whatever your answer may be, I’ll still be here. Dito lang ako. Hanggang sa ayaw mo na.
           </p>
 
           <p class="signature">
@@ -256,13 +272,13 @@ function showPopup() {
         <p>😔 Iyak na talaga ako</p>
       `,
       `
-        <p>Last na talaga to!</p>
+        <p>Last na, plsssss</p>
         <img src="https://i.pinimg.com/736x/01/d8/9f/01d89fa219cfd75867a00c1e920d776f.jpg" 
              width="100" 
              style="border-radius:10px;">
       `,
       `
-        <p>Wag naman ganon 🥺</p>
+        <p>sakit mo na ☹️</p>
         <img src="https://i.pinimg.com/736x/00/a2/51/00a2512606a9e7624651e163d57a392b.jpg" 
              width="100" 
              style="border-radius:10px;">
