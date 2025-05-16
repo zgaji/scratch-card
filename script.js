@@ -129,6 +129,11 @@ function showPopup() {
       sounds.forEach(s => { s.pause(); s.currentTime = 0; });
       document.querySelectorAll('.popup').forEach(p => p.remove());
       celebrateWithConfetti();
+      
+      // Add a slight delay before showing the letter to let the confetti start
+      setTimeout(() => {
+        showYesLetter();
+      }, 800);
     };
 
     noBtn.onclick = () => {
@@ -175,17 +180,34 @@ function showPopup() {
       <div class="envelope"> 
         <div class="flap"></div>
         <div class="letter">
-          <p>The first thing that you asked me for sa bar (aside sa name ko ofc) is to be honest with you.<br><br>
-          
-          I am not good with words or expressing my feelings. I've been waiting para sa the right moment to ask you—without the rush (actually, na-rush na talaga kasi mamatay na yung flowers HAHAHHAHA), without pressure to make things official or lagyan na ng label. I've actually been
-          meaning to ask for maybe a month now, naghihintay lang ako para sa right time to ask (+maarte ako—andami kong kaartehan na inisip if pano kita iaask). 
-          I know na sinabi natin na we'll just see what happens. But now, I feel like finally asking would make everything real—official. To be honest, I'm unsure if paano iaaproach yung sa family mo, 
-          I just know na when the time comes, I'll be there for you or kung ano mang maging desisyon mo. I don't ever want you to be pressured about any of this, especially knowing the situation sa family mo.<br><br>
-          
-          If now isn't the right time for you, if you feel like you still need space or clarity—that's okay. I just want to be
-          honest with you about what I feel. And no matter what your answer is, I'll still be here. Dito lang ako, hanggang sa ayaw mo na.</p><br><br>
-          
-          <p><strong>- Love, Zari</strong></p>
+          <div class="letter-content">
+            
+            <p>
+              I've been waiting to feel the right moment to ask you—without the rush, 
+              without pressure. I've actually been meaning to ask for maybe a month now, 
+              but I wanted to wait until I felt it was the right time.
+            </p>
+            
+            <p>
+              I know we said we'd just see what happens. But now, I feel like finally 
+              asking would make everything real—official. That we'd start facing 
+              everything together, because this would mean it's no longer just a maybe.
+            </p>
+            
+            <p>
+              If now isn't the right time for you, if you feel like you still need 
+              space or clarity—that's okay. I just want to be honest with you about 
+              what I feel. And no matter what your answer is, I'll still be here.
+            </p>
+            
+            <p>
+              Dito lang ako, hanggang sa ayaw mo na.
+            </p>
+
+            <p class="signature">
+              <strong>- Zari</strong>
+            </p>
+          </div>
           <button class="close-envelope">Close</button>
         </div>
       </div>
@@ -224,6 +246,52 @@ function showPopup() {
 
     document.body.appendChild(popup);
     addPopupListeners(popup);
+  }
+
+  function showYesLetter() {
+    const container = document.createElement('div');
+    container.className = 'envelope-container';
+    container.innerHTML = `
+      <div class="envelope"> 
+        <div class="flap"></div>
+        <div class="letter">
+          <div class="letter-content">
+            <p>
+              Thank you for saying yes! 💝 I promise to always be there for you, 
+              to make you smile, and to be your constant support through everything.
+            </p>
+            
+            <p>
+              I know this is just the beginning of our journey together, but I'm already 
+              so grateful to have you in my life. You make everything better, brighter, 
+              and more meaningful.
+            </p>
+            
+            <p>
+              I'll do my best to make you happy every single day. Thank you for giving 
+              us this chance to grow together. Looking forward to all our adventures, 
+              big and small.
+            </p>
+            
+            <p>
+              Mahal na mahal kita! 💕
+            </p>
+
+            <p class="signature">
+              <strong>- Zari</strong>
+            </p>
+          </div>
+          <button class="close-envelope">Close</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(container);
+
+    // Add close functionality
+    const closeBtn = container.querySelector('.close-envelope');
+    closeBtn.onclick = () => {
+      container.remove();
+    };
   }
 
   window.addEventListener('resize', () => {

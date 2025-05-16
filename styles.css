@@ -161,17 +161,83 @@ html, body {
   max-height: 100%;
 }
 
-.letter p {
-  margin: 0.8em 0;
+.letter-content {
+  margin-bottom: min(4vw, 32px);
+  text-align: left;
+}
+
+.letter-content p {
+  margin: 1.5em 0;
   text-align: left;
   opacity: 0;
   animation: fadeInText 0.5s ease forwards;
   animation-delay: 1.5s;
+  line-height: 1.8;
+  color: #666;
 }
 
-.letter strong {
+/* Special styles for emojis in the letter */
+.letter-content p:first-child {
+  margin-top: 0;
+}
+
+.letter-content p:has(+ p) {
+  margin-bottom: 1.2em;
+}
+
+/* Add a subtle heart animation */
+@keyframes floatingHeart {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.letter-content p:contains("💝"), 
+.letter-content p:contains("💕") {
+  display: inline-block;
+}
+
+.letter-content p:contains("💝") span, 
+.letter-content p:contains("💕") span {
+  display: inline-block;
+  animation: floatingHeart 2s ease-in-out infinite;
+}
+
+/* Make the yes letter more special */
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) {
+  background: linear-gradient(145deg, #fff4d7, #ffe4b5, #ffd700);
+  border-color: #ffd700;
+}
+
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .flap {
+  background: linear-gradient(145deg, #ffe4b5, #ffd700);
+  border-bottom-color: #ffd700;
+}
+
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter {
+  background: linear-gradient(to bottom, #fff, #fffaf0);
+}
+
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter-content p {
+  animation-duration: 0.8s;
+}
+
+/* Adjust the animation delays for the yes letter paragraphs */
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter-content p:nth-child(1) { animation-delay: 1.5s; }
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter-content p:nth-child(2) { animation-delay: 1.8s; }
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter-content p:nth-child(3) { animation-delay: 2.1s; }
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter-content p:nth-child(4) { animation-delay: 2.4s; }
+.envelope:has(.letter-content p:contains("Thank you for saying yes!")) .letter-content p:nth-child(5) { animation-delay: 2.7s; }
+
+.letter-content .signature {
+  text-align: right;
+  margin-top: 2em;
+}
+
+.letter-content .signature strong {
   color: #e47686;
   font-size: 1.1em;
+  font-weight: 900;
 }
 
 .close-envelope {
@@ -303,9 +369,16 @@ html, body {
   }
   
   .letter {
-    font-size: clamp(14px, 3.5vw, 16px);
     padding: 20px;
-    line-height: 1.5;
+  }
+  
+  .letter-content p {
+    margin: 1.2em 0;
+    line-height: 1.6;
+  }
+  
+  .letter-content .signature {
+    margin-top: 1.5em;
   }
 
   .close-envelope {
