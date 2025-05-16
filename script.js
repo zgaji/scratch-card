@@ -39,14 +39,13 @@ canvas.addEventListener('touchend', () => {
 });
 canvas.addEventListener('touchcancel', () => isDrawing = false);
 canvas.addEventListener('touchmove', e => {
-  lastX = touch.clientX - rect.left;
-  lastY = touch.clientY - rect.top;
-
   e.preventDefault();
   if (!isDrawing) return;
   const touch = e.touches[0];
   const rect = canvas.getBoundingClientRect();
-  drawLine(touch.clientX - rect.left, touch.clientY - rect.top);
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+  drawLine(x, y);
 });
 
 function celebrateWithConfetti() {
@@ -66,7 +65,8 @@ function celebrateWithConfetti() {
       origin: {
         x: Math.random(),
         y: Math.random() - 0.2
-      }
+      },
+      colors: ['#ff9999', '#ffb3b3', '#ff8080', '#ffcccc', '#ff6666']
     });
   }, 250);
 }
@@ -129,12 +129,6 @@ function showPopup() {
       sounds.forEach(s => { s.pause(); s.currentTime = 0; });
       document.querySelectorAll('.popup').forEach(p => p.remove());
       celebrateWithConfetti();
-      confetti({ 
-        particleCount: 150, 
-        spread: 70, 
-        origin: { y: 0.6 },
-        colors: ['#ff9999', '#ffb3b3', '#ff8080', '#ffcccc', '#ff6666']
-      });
     };
 
     noBtn.onclick = () => {
