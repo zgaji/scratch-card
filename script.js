@@ -175,12 +175,12 @@ function showPopup() {
       <div class="envelope"> 
         <div class="flap"></div>
         <div class="letter">
-          <p>The first thing that you asked me for sa bar (aside sa name ko ofc) is to be honest with you.<br>
+          <p>The first thing that you asked me for sa bar (aside sa name ko ofc) is to be honest with you.<br><br>
           
           I am not good with words or expressing my feelings. I've been waiting para sa the right moment to ask you—without the rush (actually, na-rush na talaga kasi mamatay na yung flowers HAHAHHAHA), without pressure to make things official or lagyan na ng label. I've actually been
           meaning to ask for maybe a month now, naghihintay lang ako para sa right time to ask (+maarte ako—andami kong kaartehan na inisip if pano kita iaask). 
           I know na sinabi natin na we'll just see what happens. But now, I feel like finally asking would make everything real—official. To be honest, I'm unsure if paano iaaproach yung sa family mo, 
-          I just know na when the time comes, I'll be there for you or kung ano mang maging desisyon mo. I don't ever want you to be pressured about any of this, especially knowing the situation sa family mo.
+          I just know na when the time comes, I'll be there for you or kung ano mang maging desisyon mo. I don't ever want you to be pressured about any of this, especially knowing the situation sa family mo.<br><br>
           
           If now isn't the right time for you, if you feel like you still need space or clarity—that's okay. I just want to be
           honest with you about what I feel. And no matter what your answer is, I'll still be here. Dito lang ako, hanggang sa ayaw mo na.</p><br><br>
